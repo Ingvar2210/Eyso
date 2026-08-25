@@ -69,6 +69,57 @@ body.menu-open {
   flex-shrink: 0;
 }
 
+/* Allow the page to scroll */
+html {
+  min-width: 1440px;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  min-width: 1440px;
+  min-height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* Let the site become taller than the screen */
+.site {
+  height: auto;
+  min-height: 100vh;
+  max-height: none;
+  overflow: visible;
+}
+
+/* Video stays between the header and bottom navigation */
+.main-area {
+  width: 100%;
+  height: calc(100vh - 135px);
+  min-height: 600px;
+  flex: none;
+  overflow: hidden;
+  position: relative;
+  background: #050505;
+}
+
+.hero-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* This section scrolls over and covers the video */
+.video-cover {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 40px;
+  background: #28276f;
+  color: #ffffff;
+  border-top: 3px solid #ffffff;
+}
 
 /* ========================================
    ALL THREE TOP BARS
@@ -205,22 +256,10 @@ a.eyso-brand:visited,
 a.eyso-brand:hover,
 a.eyso-brand:focus,
 a.eyso-brand:active {
+  pointer-events: auto !important;
+  cursor: pointer !important;
   color: #ffffff !important;
-
-  background: transparent !important;
-
   text-decoration: none !important;
-  text-decoration-line: none !important;
-
-  border: 0 !important;
-
-  outline: 0 !important;
-
-  box-shadow: none !important;
-
-  cursor: default !important;
-
-  pointer-events: none !important;
 }
 
 
@@ -1127,4 +1166,306 @@ a.eyso-brand:active {
 .about-menu::-webkit-scrollbar-thumb:hover,
 .contact-menu::-webkit-scrollbar-thumb:hover {
   background: #555555;
+}
+
+html,
+body {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.site {
+  display: block;
+  width: 1440px;
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+/* Header scrolls away normally */
+.topbar {
+  position: relative;
+  z-index: 20;
+  height: 80px;
+  background: #28276f;
+}
+
+/* Video stays visible temporarily */
+.main-area {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  background: #050505;
+}
+
+.hero-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* This page scrolls upward over the video */
+.video-cover {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 40px;
+
+  background: #28276f;
+  color: #ffffff;
+  border-top: 3px solid #ffffff;
+}
+
+.site {
+  display: block;
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+}
+
+/* Video stays fixed while the page scrolls */
+.main-area {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  z-index: 1;
+
+  width: 1440px;
+  height: calc(100vh - 80px);
+  transform: translateX(-50%);
+
+  overflow: hidden;
+  background: #050505;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Starts below the video and scrolls over it */
+.video-cover {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+  min-height: 100vh;
+  margin-top: calc(100vh - 80px);
+  padding: 100px 40px;
+
+  background: #28276f;
+  color: #ffffff;
+  border-top: 3px solid #ffffff;
+}
+
+/* Keep the header fixed while scrolling */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 100;
+
+  width: 1440px;
+  height: 80px;
+  transform: translateX(-50%);
+
+  background: #28276f;
+  border-bottom: 3px solid #ffffff;
+}
+
+/* Keep the video below the fixed header */
+.main-area {
+  top: 80px;
+}
+
+/* Make the cover page longer */
+.video-cover {
+  margin-top: calc(100vh + 30px);
+}
+
+.bottom-nav {
+  position: relative;
+  z-index: 20;
+
+  display: flex;
+  width: 100%;
+  height: 55px;
+  min-height: 55px;
+
+  background: #050505;
+  border-top: 3px solid #ffffff;
+}
+
+.cart-button {
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.cart-button:hover {
+  background: #ffffff;
+  color: #28276f;
+}
+
+.cart-button svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cart-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cart-button:focus {
+  outline: none;
+}
+
+.cart-button,
+.hamburger {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.cart-button:focus,
+.hamburger:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.account-button {
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.account-button:hover {
+  color: #9a99ff;
+}
+
+.account-button svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cart-button:hover,
+.hamburger:hover {
+  background: transparent;
+  color: #9a99ff;
+}
+
+.cart-button:focus,
+.hamburger:focus {
+  background: transparent;
+  color: #ffffff;
+  outline: none;
+  box-shadow: none;
+}
+
+a.eyso-brand {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.topbar {
+  pointer-events: auto;
+}
+
+.eyso-brand {
+  position: relative;
+  z-index: 101;
+  pointer-events: auto !important;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.about-top .eyso-brand {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 1001;
+  cursor: pointer !important;
+}
+
+.search-box {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.search-box input {
+  border-radius: 8px;
+}
+
+.topbar {
+  height: 60px;
+  min-height: 60px;
+  padding: 0 30px;
+}
+
+.topbar .eyso-brand {
+  height: 60px;
+  min-height: 60px;
+}
+
+.main-area {
+  top: 60px;
+  height: calc(100vh - 60px);
+}
+
+.video-cover {
+  margin-top: calc(100vh + 30px);
+}
+
+.about-top {
+  height: 60px;
+  min-height: 60px;
+  padding: 0 30px;
+}
+
+.about-top .eyso-brand {
+  height: 60px;
+  min-height: 60px;
+}
+
+.hero-video {
+  display: block;
+  width: 100%;
+  height: calc(100% + 10px);
+  object-fit: cover;
+  object-position: center top;
+  transform: translateY(-10px) scale(1);
+  transform-origin: center top;
 }
