@@ -1,0 +1,1130 @@
+/* ========================================
+   GLOBAL
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  min-width: 1440px;
+  min-height: 100%;
+
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+
+  min-width: 1440px;
+  min-height: 1080px;
+
+  background: #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+
+/* ========================================
+   MAIN WEBSITE
+======================================== */
+
+.site {
+  width: 1440px;
+
+  min-width: 1440px;
+  max-width: 1440px;
+
+  height: 1080px;
+
+  min-height: 1080px;
+  max-height: 1080px;
+
+  background: #050505;
+
+  display: flex;
+  flex-direction: column;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   ALL THREE TOP BARS
+
+   EXACTLY THE SAME:
+   - HEIGHT
+   - PADDING
+   - BRAND POSITION
+======================================== */
+
+.topbar,
+.about-top,
+.contact-top {
+  width: 100%;
+
+  height: 80px;
+  min-height: 80px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 40px;
+
+  background: #28276f;
+
+  border-bottom: 3px solid #ffffff;
+
+  flex-shrink: 0;
+}
+
+
+/* ABOUT + CONTACT */
+
+.about-top,
+.contact-top {
+  justify-content: space-between;
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 50;
+}
+
+
+/* ========================================
+   EYSO BRAND
+
+   PLAIN PS2-STYLE TEXT
+   SAME POSITION ON:
+   - MAIN
+   - ABOUT
+   - CONTACT
+======================================== */
+
+.eyso-brand {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+
+  height: 80px;
+  min-height: 80px;
+  max-height: 80px;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 120px;
+
+  /* PS2-STYLE FONT */
+  font-family:
+    "Michroma",
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 400;
+
+  font-style: normal;
+
+  line-height: 1;
+
+  letter-spacing: 5px;
+
+  text-transform: uppercase;
+
+  /* NORMAL WHITE TEXT */
+  color: #ffffff !important;
+
+  background: transparent !important;
+
+  /* NEVER SHOW LINK STYLING */
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+
+  border: 0 !important;
+
+  outline: 0 !important;
+
+  box-shadow: none !important;
+
+  cursor: default !important;
+
+  user-select: text;
+
+  pointer-events: none;
+
+  white-space: nowrap;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+/* ========================================
+   EXTRA PROTECTION
+
+   EVEN IF EYSO WAS ACCIDENTALLY
+   CHANGED INTO AN <a>, IT WILL NOT
+   LOOK OR BEHAVE LIKE A LINK.
+======================================== */
+
+a.eyso-brand,
+a.eyso-brand:link,
+a.eyso-brand:visited,
+a.eyso-brand:hover,
+a.eyso-brand:focus,
+a.eyso-brand:active {
+  color: #ffffff !important;
+
+  background: transparent !important;
+
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+
+  border: 0 !important;
+
+  outline: 0 !important;
+
+  box-shadow: none !important;
+
+  cursor: default !important;
+
+  pointer-events: none !important;
+}
+
+
+/* ========================================
+   MAIN HEADER BRAND SPACING
+
+   THIS ONLY CREATES SPACE AFTER EYSO.
+
+   IT DOES NOT CHANGE THE POSITION
+   OF THE EYSO TEXT ITSELF.
+======================================== */
+
+.topbar .eyso-brand {
+  margin-left: 0;
+  margin-right: 35px;
+}
+
+
+/* ABOUT + CONTACT KEEP EXACT SAME
+   LEFT POSITION AS MAIN */
+
+.about-top .eyso-brand,
+.contact-top .eyso-brand {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+/* ========================================
+   MENU TEXT
+======================================== */
+
+.menu-link {
+  margin: 0 25px 0 0;
+  padding: 0;
+
+  border: 0;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease;
+}
+
+.menu-link:hover {
+  color: #9a99ff;
+}
+
+
+/* ========================================
+   SEARCH ICON
+======================================== */
+
+.search-icon {
+  width: 20px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+
+  border: 0;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  margin-right: 10px;
+
+  flex-shrink: 0;
+
+  transition:
+    color 0.2s ease;
+}
+
+.search-icon:hover {
+  color: #9a99ff;
+}
+
+.search-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+
+/* ========================================
+   WHITE SEARCH BAR
+======================================== */
+
+.search-box {
+  width: 320px;
+
+  min-width: 320px;
+  max-width: 320px;
+
+  height: 26px;
+
+  background: #ffffff;
+
+  border: 0;
+
+  margin-right: auto;
+
+  flex-shrink: 0;
+}
+
+.search-box input {
+  width: 100%;
+  height: 100%;
+
+  padding: 3px 8px;
+
+  border: 0;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #050505;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+/* ========================================
+   HAMBURGER
+======================================== */
+
+.hamburger {
+  width: 48px;
+  min-width: 48px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.35);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.hamburger:hover {
+  background: #ffffff;
+
+  color: #28276f;
+}
+
+.hamburger svg {
+  width: 25px;
+  height: 25px;
+}
+
+
+/* ========================================
+   MAIN AREA
+======================================== */
+
+.main-area {
+  width: 100%;
+
+  flex: 1;
+
+  background: #050505;
+}
+
+
+/* ========================================
+   BOTTOM NAVIGATION
+======================================== */
+
+.bottom-nav {
+  width: 100%;
+
+  height: 55px;
+  min-height: 55px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 30px;
+
+  padding: 0 40px;
+
+  background: #050505;
+
+  border-top:
+    1px solid #333333;
+
+  flex-shrink: 0;
+}
+
+.bottom-nav a {
+  color: #a7a7a7;
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  letter-spacing: 1px;
+
+  white-space: nowrap;
+
+  flex-shrink: 0;
+
+  transition:
+    color 0.2s ease;
+}
+
+.bottom-nav a:hover {
+  color: #9a99ff;
+}
+
+
+/* ========================================
+   ABOUT PAGE
+======================================== */
+
+.about-menu {
+  position: fixed;
+
+  left: 50%;
+  top: 0;
+
+  width: 1440px;
+
+  min-width: 1440px;
+  max-width: 1440px;
+
+  height: 100vh;
+
+  transform:
+    translate(-50%, 100%);
+
+  z-index: 1000;
+
+  background: #050505;
+
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  visibility: hidden;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  overscroll-behavior: contain;
+
+  transition:
+    transform 0.55s
+      cubic-bezier(.77, 0, .18, 1),
+    visibility 0.55s;
+}
+
+.about-menu.open {
+  transform:
+    translate(-50%, 0);
+
+  visibility: visible;
+}
+
+
+/* ========================================
+   ABOUT CLOSE BUTTON
+======================================== */
+
+.close-about {
+  width: 48px;
+  min-width: 48px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.35);
+
+  background: transparent;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.close-about:hover {
+  background: #ffffff;
+
+  color: #28276f;
+}
+
+.close-about svg {
+  width: 25px;
+  height: 25px;
+}
+
+
+/* ========================================
+   ABOUT CONTENT
+======================================== */
+
+.about-content {
+  width: 1240px;
+
+  min-width: 1240px;
+  max-width: 1240px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+
+  padding: 70px 0 90px;
+
+  flex-shrink: 0;
+}
+
+.about-label {
+  margin: 0 0 20px;
+
+  color: #777777;
+
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   ABOUT TITLE
+======================================== */
+
+.about-content h1 {
+  margin: 0;
+
+  font-size: 150px;
+
+  line-height: 0.75;
+
+  letter-spacing: -8px;
+
+  font-weight: 900;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+.about-content h1 span {
+  color: #28276f;
+}
+
+
+/* ========================================
+   ABOUT DESCRIPTION
+======================================== */
+
+.about-description {
+  width: 520px;
+
+  margin-top: 50px;
+
+  color: #a7a7a7;
+
+  font-size: 17px;
+
+  line-height: 1.6;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   ABOUT LINE
+======================================== */
+
+.about-line {
+  width: 100%;
+
+  height: 1px;
+
+  margin: 36px 0 0;
+
+  background: #333333;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   ABOUT LINKS
+======================================== */
+
+.about-links {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  flex-shrink: 0;
+}
+
+.about-links a {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 19px 4px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 18px;
+
+  border-bottom:
+    1px solid #333333;
+
+  transition:
+    padding 0.25s ease,
+    color 0.25s ease;
+}
+
+.about-links a span {
+  transition:
+    transform 0.25s ease;
+}
+
+.about-links a:hover {
+  padding-left: 15px;
+
+  color: #9a99ff;
+}
+
+.about-links a:hover span {
+  transform:
+    translateX(7px);
+}
+
+
+/* ========================================
+   ABOUT FOOTER
+======================================== */
+
+.about-footer {
+  width: 100%;
+
+  height: 55px;
+  min-height: 55px;
+
+  padding: 0 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-top:
+    1px solid #333333;
+
+  color: #666666;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  flex-shrink: 0;
+}
+
+.about-footer span {
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   CONTACT PAGE
+======================================== */
+
+.contact-menu {
+  position: fixed;
+
+  left: 50%;
+  top: 0;
+
+  width: 1440px;
+
+  min-width: 1440px;
+  max-width: 1440px;
+
+  height: 100vh;
+
+  transform:
+    translate(-50%, 100%);
+
+  z-index: 1100;
+
+  background: #050505;
+
+  color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  visibility: hidden;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  overscroll-behavior: contain;
+
+  transition:
+    transform 0.55s
+      cubic-bezier(.77, 0, .18, 1),
+    visibility 0.55s;
+}
+
+.contact-menu.open {
+  transform:
+    translate(-50%, 0);
+
+  visibility: visible;
+}
+
+
+/* ========================================
+   CONTACT CLOSE BUTTON
+======================================== */
+
+.close-contact {
+  width: 48px;
+  min-width: 48px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.35);
+
+  background: transparent;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.close-contact:hover {
+  background: #ffffff;
+
+  color: #28276f;
+}
+
+.close-contact svg {
+  width: 25px;
+  height: 25px;
+}
+
+
+/* ========================================
+   CONTACT CONTENT
+======================================== */
+
+.contact-content {
+  width: 1240px;
+
+  min-width: 1240px;
+  max-width: 1240px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+
+  padding: 70px 0 90px;
+
+  flex-shrink: 0;
+}
+
+.contact-label {
+  margin: 0 0 15px;
+
+  color: #777777;
+
+  font-size: 12px;
+
+  letter-spacing: 3px;
+
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   CONTACT TITLE
+======================================== */
+
+.contact-content h1 {
+  margin: 0;
+
+  font-size: 105px;
+
+  line-height: 0.75;
+
+  letter-spacing: -6px;
+
+  font-weight: 900;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+.contact-content h1 span {
+  color: #28276f;
+}
+
+
+/* ========================================
+   CONTACT DESCRIPTION
+======================================== */
+
+.contact-description {
+  width: 520px;
+
+  margin: 30px 0;
+
+  color: #a7a7a7;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   CONTACT FORM
+======================================== */
+
+.contact-form {
+  width: 100%;
+
+  border-top:
+    1px solid #333333;
+
+  flex-shrink: 0;
+}
+
+
+/* ========================================
+   FORM ROW
+======================================== */
+
+.form-row {
+  width: 100%;
+
+  display: flex;
+
+  gap: 30px;
+}
+
+.form-row .form-group {
+  width: 50%;
+}
+
+
+/* ========================================
+   FORM GROUP
+======================================== */
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 18px 0;
+
+  border-bottom:
+    1px solid #333333;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+
+  color: #777777;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+}
+
+
+/* ========================================
+   FORM INPUTS
+======================================== */
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 18px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #444444;
+}
+
+
+/* ========================================
+   MESSAGE
+======================================== */
+
+.form-group textarea {
+  height: 100px;
+
+  min-height: 70px;
+
+  resize: vertical;
+}
+
+
+/* ========================================
+   SEND BUTTON
+======================================== */
+
+.send-message {
+  width: 100%;
+
+  height: 60px;
+
+  margin-top: 20px;
+
+  padding: 0 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border:
+    1px solid #333333;
+
+  background: #28276f;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.send-message:hover {
+  background: #ffffff;
+
+  color: #28276f;
+}
+
+
+/* ========================================
+   CONTACT FOOTER
+======================================== */
+
+.contact-footer {
+  width: 100%;
+
+  height: 55px;
+  min-height: 55px;
+
+  padding: 0 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-top:
+    1px solid #333333;
+
+  color: #666666;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  flex-shrink: 0;
+}
+
+.contact-footer span {
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   ABOUT + CONTACT SCROLLBARS
+======================================== */
+
+.about-menu::-webkit-scrollbar,
+.contact-menu::-webkit-scrollbar {
+  width: 10px;
+}
+
+.about-menu::-webkit-scrollbar-track,
+.contact-menu::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+.about-menu::-webkit-scrollbar-thumb,
+.contact-menu::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+
+.about-menu::-webkit-scrollbar-thumb:hover,
+.contact-menu::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}

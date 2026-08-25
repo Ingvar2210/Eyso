@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>EYSO Games</title>
+
+  <!-- PS2-THEMED FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Michroma&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+
+  <!-- ========================================
+       MAIN PAGE
+  ========================================= -->
+
+  <div class="site" id="home">
+
+    <header class="topbar">
+
+      <!-- NORMAL TEXT - NOT A LINK -->
+      <div class="eyso-brand">EYSO</div>
+
+      <button
+        class="menu-link"
+        id="menuText"
+        type="button"
+      >
+        menu
+      </button>
+
+      <button
+        class="search-icon"
+        type="button"
+        aria-label="Search"
+      >
+        <i data-lucide="search"></i>
+      </button>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          aria-label="Search games"
+        >
+      </div>
+
+      <button
+        class="hamburger"
+        id="openAbout"
+        type="button"
+        aria-label="Open About Us"
+        aria-expanded="false"
+      >
+        <i data-lucide="menu"></i>
+      </button>
+
+    </header>
+
+
+    <main class="main-area"></main>
+
+
+    <nav class="bottom-nav">
+      <a href="#">Horror</a>
+      <a href="#">Fighting</a>
+      <a href="#">Racing</a>
+      <a href="#">Shooter</a>
+      <a href="#">Adventure</a>
+    </nav>
+
+  </div>
+
+
+
+  <!-- ========================================
+       ABOUT PAGE
+  ========================================= -->
+
+  <section
+    class="about-menu"
+    id="aboutMenu"
+    aria-hidden="true"
+  >
+
+    <header class="about-top">
+
+      <!-- SAME NORMAL TEXT - NOT A LINK -->
+      <div class="eyso-brand">EYSO</div>
+
+      <button
+        class="close-about"
+        id="closeAbout"
+        type="button"
+        aria-label="Close About Us"
+      >
+        <i data-lucide="x"></i>
+      </button>
+
+    </header>
+
+
+    <div class="about-content">
+
+      <p class="about-label">
+        Starting... / ABOUT
+      </p>
+
+
+      <h1>
+        ABOUT<br>
+        <span>US.</span>
+      </h1>
+
+
+      <p class="about-description">
+        EYSO is a place for discovering and celebrating
+        games from different generations.
+      </p>
+
+
+      <div class="about-line"></div>
+
+
+      <nav class="about-links">
+
+        <a
+          href="#home"
+          id="goHome"
+        >
+          Games
+          <span>→</span>
+        </a>
+
+
+        <a
+          href="#"
+          id="stayAbout"
+        >
+          About Us
+          <span>→</span>
+        </a>
+
+
+        <a
+          href="#"
+          id="openContact"
+        >
+          Contact
+          <span>→</span>
+        </a>
+
+      </nav>
+
+    </div>
+
+
+    <footer class="about-footer">
+      <span>EYSO</span>
+      <span>RETRO GAMES</span>
+    </footer>
+
+  </section>
+
+
+
+  <!-- ========================================
+       CONTACT PAGE
+  ========================================= -->
+
+  <section
+    class="contact-menu"
+    id="contactMenu"
+    aria-hidden="true"
+  >
+
+    <header class="contact-top">
+
+      <!-- SAME NORMAL TEXT - NOT A LINK -->
+      <div class="eyso-brand">EYSO</div>
+
+      <button
+        class="close-contact"
+        id="closeContact"
+        type="button"
+        aria-label="Close Contact"
+      >
+        <i data-lucide="x"></i>
+      </button>
+
+    </header>
+
+
+    <div class="contact-content">
+
+      <p class="contact-label">
+        Starting... / CONTACT
+      </p>
+
+
+      <h1>
+        CONTACT<br>
+        <span>US.</span>
+      </h1>
+
+
+      <p class="contact-description">
+        Have a question, suggestion, or just want to talk games?
+        Send us a message.
+      </p>
+
+
+      <form
+        class="contact-form"
+        id="contactForm"
+      >
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label for="contactName">
+              NAME
+            </label>
+
+            <input
+              type="text"
+              id="contactName"
+              name="name"
+              placeholder="Your name"
+              autocomplete="name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="contactEmail">
+              EMAIL
+            </label>
+
+            <input
+              type="email"
+              id="contactEmail"
+              name="email"
+              placeholder="your@email.com"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="contactSubject">
+            SUBJECT
+          </label>
+
+          <input
+            type="text"
+            id="contactSubject"
+            name="subject"
+            placeholder="What's this about?"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="contactMessage">
+            MESSAGE
+          </label>
+
+          <textarea
+            id="contactMessage"
+            name="message"
+            placeholder="Write your message..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="send-message"
+        >
+          <span>SEND MESSAGE</span>
+          <span>→</span>
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <footer class="contact-footer">
+      <span>EYSO</span>
+      <span>RETRO GAMES</span>
+    </footer>
+
+  </section>
+
+
+
+  <!-- ========================================
+       JAVASCRIPT
+  ========================================= -->
+
+  <script>
+
+    lucide.createIcons();
+
+
+    const openAbout =
+      document.getElementById("openAbout");
+
+    const menuText =
+      document.getElementById("menuText");
+
+    const closeAbout =
+      document.getElementById("closeAbout");
+
+    const aboutMenu =
+      document.getElementById("aboutMenu");
+
+    const goHome =
+      document.getElementById("goHome");
+
+    const stayAbout =
+      document.getElementById("stayAbout");
+
+    const openContact =
+      document.getElementById("openContact");
+
+    const closeContact =
+      document.getElementById("closeContact");
+
+    const contactMenu =
+      document.getElementById("contactMenu");
+
+    const contactForm =
+      document.getElementById("contactForm");
+
+
+    /* ========================================
+       OPEN ABOUT
+    ========================================= */
+
+    function openAboutPage() {
+
+      contactMenu.classList.remove("open");
+
+      contactMenu.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      aboutMenu.scrollTop = 0;
+
+      aboutMenu.classList.add("open");
+
+      aboutMenu.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      openAbout.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+
+      document.body.classList.add(
+        "menu-open"
+      );
+
+    }
+
+
+    openAbout.addEventListener(
+      "click",
+      openAboutPage
+    );
+
+
+    menuText.addEventListener(
+      "click",
+      openAboutPage
+    );
+
+
+    /* ========================================
+       CLOSE ABOUT
+    ========================================= */
+
+    closeAbout.addEventListener(
+      "click",
+      () => {
+
+        aboutMenu.classList.remove(
+          "open"
+        );
+
+        aboutMenu.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+        openAbout.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        document.body.classList.remove(
+          "menu-open"
+        );
+
+      }
+    );
+
+
+    /* ========================================
+       GAMES -> MAIN PAGE
+    ========================================= */
+
+    goHome.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+
+        aboutMenu.classList.remove(
+          "open"
+        );
+
+        contactMenu.classList.remove(
+          "open"
+        );
+
+
+        aboutMenu.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+        contactMenu.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+
+        openAbout.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+
+        document.body.classList.remove(
+          "menu-open"
+        );
+
+
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+
+      }
+    );
+
+
+    /* ========================================
+       ABOUT LINK
+    ========================================= */
+
+    stayAbout.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+        aboutMenu.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+    );
+
+
+    /* ========================================
+       OPEN CONTACT
+    ========================================= */
+
+    openContact.addEventListener(
+      "click",
+      (event) => {
+
+        event.preventDefault();
+
+
+        aboutMenu.classList.remove(
+          "open"
+        );
+
+        aboutMenu.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+
+        openAbout.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+
+        contactMenu.scrollTop = 0;
+
+        contactMenu.classList.add(
+          "open"
+        );
+
+        contactMenu.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+
+        document.body.classList.add(
+          "menu-open"
+        );
+
+      }
+    );
+
+
+    /* ========================================
+       CLOSE CONTACT
+    ========================================= */
+
+    closeContact.addEventListener(
+      "click",
+      () => {
+
+        contactMenu.classList.remove(
+          "open"
+        );
+
+        contactMenu.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+        document.body.classList.remove(
+          "menu-open"
+        );
+
+      }
+    );
+
+
+    /* ========================================
+       CONTACT FORM
+    ========================================= */
+
+    contactForm.addEventListener(
+      "submit",
+      (event) => {
+
+        event.preventDefault();
+
+
+        const name =
+          document
+            .getElementById("contactName")
+            .value
+            .trim();
+
+
+        const email =
+          document
+            .getElementById("contactEmail")
+            .value
+            .trim();
+
+
+        const subject =
+          document
+            .getElementById("contactSubject")
+            .value
+            .trim();
+
+
+        const message =
+          document
+            .getElementById("contactMessage")
+            .value
+            .trim();
+
+
+        /*
+          PUT YOUR EMAIL HERE
+        */
+
+        const destinationEmail =
+          "YOUR-EMAIL@example.com";
+
+
+        const emailBody =
+`EYSO WEBSITE CONTACT
+
+Name: ${name}
+
+Email: ${email}
+
+--------------------------------
+
+MESSAGE:
+
+${message}
+
+--------------------------------
+
+Sent through the EYSO website.`;
+
+
+        const mailtoLink =
+          `mailto:${destinationEmail}` +
+          `?subject=${encodeURIComponent(subject)}` +
+          `&body=${encodeURIComponent(emailBody)}`;
+
+
+        window.location.href =
+          mailtoLink;
+
+      }
+    );
+
+
+    /* ========================================
+       ESCAPE KEY
+    ========================================= */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (event.key === "Escape") {
+
+          aboutMenu.classList.remove(
+            "open"
+          );
+
+          contactMenu.classList.remove(
+            "open"
+          );
+
+
+          aboutMenu.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+          contactMenu.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+
+          openAbout.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+
+          document.body.classList.remove(
+            "menu-open"
+          );
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+
+</html>
