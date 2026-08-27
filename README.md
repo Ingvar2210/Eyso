@@ -10,7 +10,6 @@ A responsive HTML/CSS/JavaScript recreation of the supplied reference screenshot
 ## Files
 - `index.html` — page structure
 - `style.css` — layout, colors, cards, responsive design
-- `script.js` — hamburger drawer interaction
 
 ## Notes
 The sample game artwork uses externally hosted images. Replace the `<img src="...">` values with your own local images if you want full control and offline use.
