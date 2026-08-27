@@ -36,8 +36,12 @@
 
     <header class="topbar">
 
-      <!-- NORMAL TEXT - NOT A LINK -->
-      <div class="eyso-brand">EYSO</div>
+      
+      <a class="eyso-brand" href="index.html" aria-label="Go to the front page">
+       EYSO
+      </a>
+
+      
 
       <button
         class="menu-link"
@@ -63,6 +67,15 @@
         >
       </div>
 
+      <button class="account-button" type="button" aria-label="My account">
+  <i data-lucide="circle-user-round"></i>
+      </button>
+
+      <button class="cart-button" type="button" aria-label="Shopping cart">
+      <i data-lucide="shopping-cart"></i>
+      </button>
+
+
       <button
         class="hamburger"
         id="openAbout"
@@ -76,7 +89,24 @@
     </header>
 
 
-    <main class="main-area"></main>
+  <main class="main-area">
+  <video
+    class="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-label="EYSO games video"
+  >
+    <source src="Backround vid2.mp4" type="video/mp4">
+    Your browser does not support HTML video.
+  </video>
+</main>
+
+<section class="video-cover">
+  <!-- Add website content here -->
+</section>
 
 
     <nav class="bottom-nav">
@@ -103,8 +133,9 @@
 
     <header class="about-top">
 
-      <!-- SAME NORMAL TEXT - NOT A LINK -->
-      <div class="eyso-brand">EYSO</div>
+      <a class="eyso-brand" href="./index.html" aria-label="Go to the home page">
+      EYSO
+      </a>
 
       <button
         class="close-about"
