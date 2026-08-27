@@ -44,14 +44,6 @@
       
 
       <button
-        class="menu-link"
-        id="menuText"
-        type="button"
-      >
-        menu
-      </button>
-
-      <button
         class="search-icon"
         type="button"
         aria-label="Search"
@@ -67,12 +59,15 @@
         >
       </div>
 
-      <button class="account-button" type="button" aria-label="My account">
+      <span class="profile-username" id="profileUsername" aria-live="polite"></span>
+
+      <button class="account-button" id="openProfile" type="button" aria-label="My account">
   <i data-lucide="circle-user-round"></i>
       </button>
 
-      <button class="cart-button" type="button" aria-label="Shopping cart">
+      <button class="cart-button" id="openCheckout" type="button" aria-label="Shopping cart">
       <i data-lucide="shopping-cart"></i>
+      <span class="cart-count" id="cartCount">0</span>
       </button>
 
 
@@ -102,10 +97,69 @@
     <source src="Backround vid2.mp4" type="video/mp4">
     Your browser does not support HTML video.
   </video>
+
+  <div
+    class="video-scroll-zone"
+    id="videoScrollZone"
+    role="button"
+    tabindex="0"
+    aria-label="Scroll to games"
+  ></div>
+
+  <button
+    class="video-scroll-button"
+    id="videoScrollButton"
+    type="button"
+    aria-label="Scroll to games"
+  >
+    <i data-lucide="arrow-down"></i>
+  </button>
 </main>
 
 <section class="video-cover">
-  <!-- Add website content here -->
+    <div class="batman-backdrop" data-game-name="Batman: Arkham City" data-price="29.99">
+      <div class="batman-backdrop-image">
+        <img src="Photos/Batman cover number 2.jpg" alt="Batman cover">
+        <div class="batman-photo-title">Game of the month</div>
+        <div class="batman-cover-slot" role="button" tabindex="0" data-game-name="Batman: Arkham City" data-price="29.99">
+          <img src="Photos/Batman cover.jpg" alt="Batman cover artwork">
+        </div>
+        <div class="game-about-panel" aria-hidden="true">
+          <button class="game-about-close" type="button" aria-label="Close game information">
+            <i data-lucide="x"></i>
+          </button>
+          <div class="game-about-heading">
+            <h2 id="selectedGameTitle"></h2>
+            <p class="selected-game-description">A classic retro game ready to add to your collection.</p>
+            <p class="selected-game-price"></p>
+            <button class="add-to-cart-button" id="addToCart" type="button">
+              <span>ADD TO CART</span>
+              <i data-lucide="shopping-cart"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="cover-photo-panel">
+    <div class="cover-photo-grid" aria-label="Photo collection">
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Animal Crossing"><img src="Photos/1.jpg" alt="Animal Crossing"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Luigi's Mansion"><img src="Photos/2.jpg" alt="Luigi's Mansion"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="The Legend of Zelda: Twilight Princess"><img src="Photos/3.jpg" alt="The Legend of Zelda: Twilight Princess"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Battalion Wars"><img src="Photos/4.jpg" alt="Battalion Wars"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Mario Kart: Double Dash!!"><img src="Photos/5.jpg" alt="Mario Kart: Double Dash!!"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Resident Evil"><img src="Photos/6.jpg" alt="Resident Evil"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Star Wars Battlefront"><img src="Photos/7.jpg" alt="Star Wars Battlefront"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Kingdom Hearts"><img src="Photos/8.jpg" alt="Kingdom Hearts"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="The Sims 2: Pets"><img src="Photos/9.jpg" alt="The Sims 2: Pets"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="The Simpsons: Hit & Run"><img src="Photos/10.jpg" alt="The Simpsons: Hit & Run"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Tetris"><img src="Photos/11.jpg" alt="Tetris"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Earthworm Jim"><img src="Photos/12.jpg" alt="Earthworm Jim"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Gargoyle's Quest"><img src="Photos/13.jpg" alt="Gargoyle's Quest"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="DuckTales"><img src="Photos/14.jpg" alt="DuckTales"></div>
+      <div class="photo-slot" role="button" tabindex="0" data-game-name="Pokemon Red Version"><img src="Photos/15.jpg" alt="Pokemon Red Version"></div>
+    </div>
+  </div>
 </section>
 
 
@@ -118,8 +172,6 @@
     </nav>
 
   </div>
-
-
 
   <!-- ========================================
        ABOUT PAGE
@@ -226,7 +278,7 @@
     <header class="contact-top">
 
       <!-- SAME NORMAL TEXT - NOT A LINK -->
-      <div class="eyso-brand">EYSO</div>
+      <a class="eyso-brand" href="index.html" aria-label="Go to the front page">EYSO</a>
 
       <button
         class="close-contact"
@@ -360,19 +412,169 @@
 
 
   <!-- ========================================
+       CHECKOUT PAGE
+  ========================================= -->
+
+  <section
+    class="checkout-menu"
+    id="checkoutMenu"
+    aria-hidden="true"
+  >
+
+    <header class="checkout-top">
+      <a class="eyso-brand" href="index.html" aria-label="Go to the front page">EYSO</a>
+
+      <button
+        class="close-checkout"
+        id="closeCheckout"
+        type="button"
+        aria-label="Close checkout"
+      >
+        <i data-lucide="x"></i>
+      </button>
+    </header>
+
+    <div class="checkout-content">
+      <div class="checkout-heading">
+        <p class="checkout-label">YOUR CART / CHECKOUT</p>
+        <h1>CHECK<br><span>OUT.</span></h1>
+      </div>
+
+      <div class="checkout-layout">
+        <div class="checkout-summary">
+          <div class="checkout-section-heading">
+            <h2>Order summary</h2>
+            <span id="cartItemCount">0 ITEMS</span>
+          </div>
+
+          <div id="cartItems"></div>
+          <p class="empty-cart-message" id="emptyCartMessage">Your cart is empty.</p>
+
+          <div class="checkout-totals">
+            <div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
+            <div><span>Shipping</span><strong>FREE</strong></div>
+            <div class="checkout-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+          </div>
+        </div>
+
+        <form class="checkout-form" id="checkoutForm">
+          <div class="checkout-section-heading">
+            <h2>Delivery details</h2>
+          </div>
+
+          <div class="checkout-form-row">
+            <label><span>FIRST NAME</span><input type="text" name="firstName" autocomplete="given-name" required></label>
+            <label><span>LAST NAME</span><input type="text" name="lastName" autocomplete="family-name" required></label>
+          </div>
+          <label><span>EMAIL</span><input type="email" name="email" autocomplete="email" required></label>
+          <label><span>ADDRESS</span><input type="text" name="address" autocomplete="street-address" required></label>
+
+          <div class="checkout-section-heading payment-heading">
+            <h2>Payment</h2>
+            <i data-lucide="lock-keyhole"></i>
+          </div>
+          <label><span>CARD NUMBER</span><input type="text" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" required></label>
+          <div class="checkout-form-row">
+            <label><span>EXPIRY</span><input type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" required></label>
+            <label><span>CVV</span><input type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="000" required></label>
+          </div>
+
+          <button class="place-order-button" type="submit">
+            <span>PLACE ORDER</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ========================================
+       PROFILE PAGE
+  ========================================= -->
+
+  <section
+    class="profile-menu"
+    id="profileMenu"
+    aria-hidden="true"
+  >
+    <header class="profile-top">
+      <a class="eyso-brand" href="index.html" aria-label="Go to the front page">EYSO</a>
+      <button class="close-profile" id="closeProfile" type="button" aria-label="Close profile">
+        <i data-lucide="x"></i>
+      </button>
+    </header>
+
+    <div class="profile-content">
+      <div class="profile-heading">
+        <p>YOUR ACCOUNT / EYSO</p>
+        <h1>YOUR<br><span>PROFILE.</span></h1>
+      </div>
+
+      <div class="profile-layout">
+        <form class="profile-form" id="loginForm">
+          <div class="profile-section-heading">
+            <h2>Log in</h2>
+            <span>RETURNING PLAYER</span>
+          </div>
+          <label><span>EMAIL</span><input type="email" name="loginEmail" autocomplete="email" required></label>
+          <label><span>PASSWORD</span><input type="password" name="loginPassword" autocomplete="current-password" required></label>
+          <button class="profile-submit" type="submit"><span>LOG IN</span><i data-lucide="arrow-right"></i></button>
+          <p class="profile-status" aria-live="polite"></p>
+        </form>
+
+        <form class="profile-form" id="createProfileForm">
+          <div class="profile-section-heading">
+            <h2>Create profile</h2>
+            <span>NEW MEMBER</span>
+          </div>
+          <label><span>USERNAME</span><input type="text" name="username" autocomplete="username" required></label>
+          <label><span>EMAIL</span><input type="email" name="profileEmail" autocomplete="email" required></label>
+          <label><span>PASSWORD</span><input type="password" name="profilePassword" autocomplete="new-password" required></label>
+          <button class="profile-submit" type="submit"><span>CREATE PROFILE</span><i data-lucide="user-plus"></i></button>
+          <p class="profile-status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <button class="profile-switch" id="showSignup" type="button">
+        <span>SIGN UP</span>
+        <i data-lucide="arrow-right"></i>
+      </button>
+
+      <button class="profile-switch profile-switch-back" id="showLogin" type="button">
+        <i data-lucide="arrow-left"></i>
+        <span>BACK TO LOG IN</span>
+      </button>
+
+      <div class="profile-account-view" id="profileAccountView" aria-hidden="true">
+        <p class="profile-account-kicker">SIGNED IN</p>
+        <h2 id="loggedInUsername"></h2>
+        <p id="loggedInEmail"></p>
+        <button class="profile-logout" id="logoutProfile" type="button">
+          <span>LOG OUT</span>
+          <i data-lucide="log-out"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ========================================
        JAVASCRIPT
   ========================================= -->
 
   <script>
 
+    // Initialize the icon library after the page markup is available.
     lucide.createIcons();
 
 
+    // Cache shared page controls and panels.
     const openAbout =
       document.getElementById("openAbout");
-
-    const menuText =
-      document.getElementById("menuText");
 
     const closeAbout =
       document.getElementById("closeAbout");
@@ -397,6 +599,378 @@
 
     const contactForm =
       document.getElementById("contactForm");
+
+    const openCheckout =
+      document.getElementById("openCheckout");
+
+    const closeCheckout =
+      document.getElementById("closeCheckout");
+
+    const checkoutMenu =
+      document.getElementById("checkoutMenu");
+
+    const checkoutForm =
+      document.getElementById("checkoutForm");
+
+    // Cart state and checkout summary updates.
+    const cartCount =
+      document.getElementById("cartCount");
+
+    const cartItemCount =
+      document.getElementById("cartItemCount");
+
+    const cartSubtotal =
+      document.getElementById("cartSubtotal");
+
+    const cartTotal =
+      document.getElementById("cartTotal");
+
+    const emptyCartMessage =
+      document.getElementById("emptyCartMessage");
+
+    const cartItems =
+      document.getElementById("cartItems");
+
+    const addToCart =
+      document.getElementById("addToCart");
+
+    const selectedGamePrice =
+      document.querySelector(".selected-game-price");
+
+    let selectedGame = null;
+    const cart = [];
+
+    function renderCart() {
+      const itemCount = cart.reduce(
+        (total, item) => total + item.quantity,
+        0
+      );
+
+      cartCount.textContent = itemCount;
+      cartItemCount.textContent = `${itemCount} ${itemCount === 1 ? "ITEM" : "ITEMS"}`;
+      emptyCartMessage.hidden = cart.length > 0;
+      cartItems.innerHTML = cart.map(
+        (item) => `
+          <div class="checkout-product" data-cart-id="${item.id}">
+            <img src="${item.image}" alt="${item.name}">
+            <div>
+              <h3>${item.name}</h3>
+              <p>Game edition</p>
+              <strong>${item.priceLabel}</strong>
+            </div>
+            <label class="quantity-control">
+              <span>QTY</span>
+              <select aria-label="Quantity for ${item.name}">
+                <option ${item.quantity === 1 ? "selected" : ""}>1</option>
+                <option ${item.quantity === 2 ? "selected" : ""}>2</option>
+                <option ${item.quantity === 3 ? "selected" : ""}>3</option>
+              </select>
+            </label>
+            <button class="remove-cart-item" type="button" data-remove-cart-id="${item.id}" aria-label="Remove ${item.name} from cart" title="Remove item">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+        `
+      ).join("");
+
+      const subtotal = cart.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+
+      cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+      cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+      checkoutForm.querySelector(".place-order-button").disabled = itemCount === 0;
+      lucide.createIcons();
+    }
+
+    function addSelectedGameToCart() {
+      const existingItem = cart.find(
+        (item) => item.id === selectedGame.id
+      );
+
+      if (existingItem) {
+        existingItem.quantity = Math.min(existingItem.quantity + 1, 3);
+      } else {
+        cart.push({ ...selectedGame, quantity: 1 });
+      }
+
+      renderCart();
+      addToCart.querySelector("span").textContent = "ADDED TO CART";
+    }
+
+    cartItems.addEventListener("click", (event) => {
+      const removeButton = event.target.closest("[data-remove-cart-id]");
+
+      if (!removeButton) {
+        return;
+      }
+
+      const itemIndex = cart.findIndex(
+        (item) => item.id === removeButton.dataset.removeCartId
+      );
+
+      cart.splice(itemIndex, 1);
+      renderCart();
+    });
+
+    cartItems.addEventListener("change", (event) => {
+      if (!event.target.matches("select")) {
+        return;
+      }
+
+      const itemRow = event.target.closest("[data-cart-id]");
+      const item = cart.find(
+        (cartItem) => cartItem.id === itemRow.dataset.cartId
+      );
+
+      item.quantity = Number(event.target.value);
+      renderCart();
+    });
+
+    addToCart.addEventListener("click", addSelectedGameToCart);
+    renderCart();
+
+    // Profile panel, login, and account persistence.
+    const openProfile =
+      document.getElementById("openProfile");
+
+    const closeProfile =
+      document.getElementById("closeProfile");
+
+    const profileMenu =
+      document.getElementById("profileMenu");
+
+    const loginForm =
+      document.getElementById("loginForm");
+
+    const createProfileForm =
+      document.getElementById("createProfileForm");
+
+    const profileAccountView =
+      document.getElementById("profileAccountView");
+
+    const loggedInUsername =
+      document.getElementById("loggedInUsername");
+
+    const loggedInEmail =
+      document.getElementById("loggedInEmail");
+
+    const logoutProfile =
+      document.getElementById("logoutProfile");
+
+    const showSignup =
+      document.getElementById("showSignup");
+
+    const showLogin =
+      document.getElementById("showLogin");
+
+    const profileUsername =
+      document.getElementById("profileUsername");
+
+    const videoScrollButton =
+      document.getElementById("videoScrollButton");
+
+    const videoScrollZone =
+      document.getElementById("videoScrollZone");
+
+    const videoCover =
+      document.querySelector(".video-cover");
+
+
+    // Open and close the checkout panel.
+    function openCheckoutPage() {
+
+      aboutMenu.classList.remove("open");
+      contactMenu.classList.remove("open");
+      checkoutMenu.classList.add("open");
+      checkoutMenu.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
+
+    }
+
+
+    function closeCheckoutPage() {
+
+      checkoutMenu.classList.remove("open");
+      checkoutMenu.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+
+    }
+
+
+    openCheckout.addEventListener(
+      "click",
+      openCheckoutPage
+    );
+
+    closeCheckout.addEventListener(
+      "click",
+      closeCheckoutPage
+    );
+
+    checkoutForm.querySelector(".place-order-button").disabled = true;
+
+    checkoutForm.addEventListener(
+      "submit",
+      (event) => {
+        event.preventDefault();
+        checkoutForm.querySelector(".place-order-button span").textContent = "ORDER RECEIVED";
+      }
+    );
+
+
+    // Open and close the profile panel.
+    function openProfilePage() {
+
+      aboutMenu.classList.remove("open");
+      contactMenu.classList.remove("open");
+      checkoutMenu.classList.remove("open");
+      const profile =
+        JSON.parse(localStorage.getItem("eysoProfile") || "null");
+
+      if (profile && profile.username) {
+        renderLoggedInProfile(profile);
+      }
+
+      profileMenu.classList.add("open");
+      profileMenu.setAttribute("aria-hidden", "false");
+      document.body.classList.add("menu-open");
+
+    }
+
+
+    function closeProfilePage() {
+
+      profileMenu.classList.remove("open");
+      profileMenu.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("menu-open");
+
+    }
+
+
+    openProfile.addEventListener(
+      "click",
+      openProfilePage
+    );
+
+    closeProfile.addEventListener(
+      "click",
+      closeProfilePage
+    );
+
+    showSignup.addEventListener(
+      "click",
+      () => {
+        profileMenu.classList.add("signup-open");
+      }
+    );
+
+    showLogin.addEventListener(
+      "click",
+      () => {
+        profileMenu.classList.remove("signup-open");
+      }
+    );
+
+
+    // Keep the signed-in username visible in the main header.
+    function showProfileUsername(username) {
+
+      profileUsername.textContent = username;
+
+    }
+
+
+    function renderLoggedInProfile(profile) {
+
+      showProfileUsername(profile.username);
+      loggedInUsername.textContent = profile.username;
+      loggedInEmail.textContent = profile.email || "EYSO profile";
+      profileMenu.classList.add("logged-in");
+      profileAccountView.setAttribute("aria-hidden", "false");
+
+    }
+
+
+    function clearLoggedInProfile() {
+
+      profileMenu.classList.remove("logged-in");
+      profileAccountView.setAttribute("aria-hidden", "true");
+      profileUsername.textContent = "";
+
+    }
+
+
+    function returnHomeAfterProfile() {
+
+      closeProfilePage();
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    // Restore the saved profile when the page loads.
+    const savedProfile =
+      JSON.parse(localStorage.getItem("eysoProfile") || "null");
+
+    if (savedProfile && savedProfile.username) {
+      showProfileUsername(savedProfile.username);
+    }
+
+    loginForm.addEventListener(
+      "submit",
+      (event) => {
+        event.preventDefault();
+
+        const profile =
+          JSON.parse(localStorage.getItem("eysoProfile") || "null");
+
+        if (profile && profile.username) {
+          renderLoggedInProfile(profile);
+          returnHomeAfterProfile();
+        } else {
+          loginForm.querySelector(
+            ".profile-status"
+          ).textContent = "CREATE A PROFILE FIRST";
+        }
+      }
+    );
+
+    createProfileForm.addEventListener(
+      "submit",
+      (event) => {
+        event.preventDefault();
+
+        const username =
+          createProfileForm.elements.username.value.trim();
+
+        const email =
+          createProfileForm.elements.profileEmail.value.trim();
+
+        localStorage.setItem(
+          "eysoProfile",
+          JSON.stringify({ username, email })
+        );
+
+        renderLoggedInProfile({ username, email });
+        returnHomeAfterProfile();
+      }
+    );
+
+    logoutProfile.addEventListener(
+      "click",
+      () => {
+        localStorage.removeItem("eysoProfile");
+        clearLoggedInProfile();
+        returnHomeAfterProfile();
+      }
+    );
 
 
     /* ========================================
@@ -437,12 +1011,6 @@
 
 
     openAbout.addEventListener(
-      "click",
-      openAboutPage
-    );
-
-
-    menuText.addEventListener(
       "click",
       openAboutPage
     );
@@ -738,6 +1306,202 @@ Sent through the EYSO website.`;
           document.body.classList.remove(
             "menu-open"
           );
+
+        }
+
+      }
+    );
+
+
+    // Game popup and gallery interactions.
+    const gameSlots =
+      document.querySelectorAll(".batman-cover-slot");
+
+    const photoSlots =
+      document.querySelectorAll(".photo-slot");
+
+    const gameAboutPanel =
+      document.querySelector(".game-about-panel");
+
+    const gameAboutClose =
+      document.querySelector(".game-about-close");
+
+    const selectedGameTitle =
+      document.getElementById("selectedGameTitle");
+
+    const batmanCoverSlot =
+      document.querySelector(".batman-cover-slot");
+
+    // Open the selected game's information and purchase popup.
+    function showGameAbout(event) {
+
+      const gameSlot = event.currentTarget;
+      const gameImage = gameSlot.querySelector("img");
+      const price = Number(gameSlot.dataset.price || 0);
+
+      selectedGame = {
+        id: gameSlot.dataset.gameName,
+        name: gameSlot.dataset.gameName,
+        image: gameImage ? gameImage.getAttribute("src") : "",
+        price,
+        priceLabel: price ? `$${price.toFixed(2)}` : "PRICE COMING SOON"
+      };
+
+      selectedGameTitle.textContent =
+        selectedGame.name || "";
+
+      selectedGamePrice.textContent =
+        selectedGame.priceLabel;
+
+      addToCart.querySelector("span").textContent =
+        cart.some((item) => item.id === selectedGame.id)
+          ? "ADDED TO CART"
+          : "ADD TO CART";
+
+      gameAboutPanel.classList.add(
+        "visible"
+      );
+
+      gameAboutPanel.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+    }
+
+
+    gameAboutClose.addEventListener(
+      "click",
+      () => {
+
+        gameAboutPanel.classList.remove(
+          "visible"
+        );
+
+        gameAboutPanel.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+      }
+    );
+
+
+    gameSlots.forEach(
+      (gameSlot) => {
+
+        gameSlot.addEventListener(
+          "click",
+          showGameAbout
+        );
+
+        gameSlot.addEventListener(
+          "keydown",
+          (event) => {
+
+            if (
+              event.key === "Enter" ||
+              event.key === " "
+            ) {
+
+              event.preventDefault();
+              showGameAbout(event);
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+
+    // Support mouse and keyboard activation for the photo collection.
+    photoSlots.forEach(
+      (photoSlot) => {
+
+        photoSlot.addEventListener("click", showGameAbout);
+
+        photoSlot.addEventListener(
+          "keydown",
+          (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              showGameAbout(event);
+            }
+          }
+        );
+
+      }
+    );
+
+
+    batmanCoverSlot.addEventListener(
+      "mouseenter",
+      (event) => {
+        showGameAbout(event);
+      }
+    );
+
+
+    // Smoothly move from the hero video to the game collection.
+    function panToCoverPage() {
+
+        const startPosition = window.scrollY;
+        const targetPosition =
+          videoCover.getBoundingClientRect().top +
+          startPosition;
+        const duration = 450;
+        const startTime = performance.now();
+
+        function panToCover(currentTime) {
+
+          const progress = Math.min(
+            (currentTime - startTime) / duration,
+            1
+          );
+          const easedProgress =
+            1 - Math.pow(1 - progress, 3);
+
+          window.scrollTo(
+            0,
+            startPosition +
+              (targetPosition - startPosition) *
+                easedProgress
+          );
+
+          if (progress < 1) {
+            requestAnimationFrame(panToCover);
+          }
+
+        }
+
+        requestAnimationFrame(panToCover);
+
+    }
+
+
+    videoScrollButton.addEventListener(
+      "click",
+      panToCoverPage
+    );
+
+    videoScrollZone.addEventListener(
+      "click",
+      panToCoverPage
+    );
+
+    videoScrollZone.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Enter" ||
+          event.key === " "
+        ) {
+
+          event.preventDefault();
+          panToCoverPage();
 
         }
 
