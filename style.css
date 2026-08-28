@@ -97,11 +97,35 @@ body {
   background: #050505;
 }
 
+/* Show the requested label above the video in the top-left corner. */
+.video-input-label {
+  position: absolute;
+  top: 24px;
+  left: 80px;
+  z-index: 10;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Michroma", Arial, Helvetica, sans-serif;
+  font-size: 42px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.video-input-label span {
+  display: inline-block;
+  transform: translateX(40px);
+}
+
+/* Hero video styling */
 .hero-video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: contrast(1.08) brightness(0.70) saturate(0.86);
 }
 
 /* Cover the video with the game collection as the page scrolls. */
@@ -474,7 +498,6 @@ a.eyso-brand:active {
   padding: 0 40px;
 
   background: #050505;
-
   border-top:
     1px solid #333333;
 
@@ -500,6 +523,15 @@ a.eyso-brand:active {
 
 .bottom-nav a:hover {
   color: #9a99ff;
+}
+
+.legal-notice {
+  max-width: 720px;
+  margin: 0 0 0 auto;
+  color: #777777;
+  font-size: 9px;
+  line-height: 1.35;
+  text-align: right;
 }
 
 
@@ -1298,8 +1330,9 @@ body {
   margin-top: 360px;
   margin-bottom: 0;
   padding: 24px;
-  background: #050505;
-  transform: translateY(130px);
+  background: #28276f;
+  border-radius: 12px;
+  transform: translateY(110px);
 }
 
 .batman-photo-title {
@@ -1312,10 +1345,11 @@ body {
   align-items: center;
   justify-content: center;
   color: #000000 !important;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: 0;
+  font-family: "Michroma", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
 }
 
 .batman-backdrop {
@@ -1327,7 +1361,10 @@ body {
   height: calc(33.75vw - 12px);
   border: 4px solid #28276f;
   border-left: 0;
-  border-radius: 6px;
+  border-radius: 10px;
+  outline: 3px solid #28276f;
+  outline-offset: 24px;
+  box-shadow: 0 0 0 20px #28276f;
   overflow: visible;
   background: #050505;
 }
@@ -1356,7 +1393,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 10px 10px 0;
 }
 
 .batman-backdrop img {
@@ -1374,7 +1411,7 @@ body {
   z-index: 2;
   width: 22%;
   aspect-ratio: 4 / 5;
-  border: 4px solid #28276f;
+  border: 4px solid #5a5a5a;
   border-radius: 6px;
   overflow: hidden;
   background: #050505;
@@ -1386,17 +1423,17 @@ body {
     box-shadow 0.35s cubic-bezier(.22, 1, .36, 1);
 }
 
-.batman-cover-slot:hover {
-  border-color: #7a3040;
-  box-shadow: 0 0 0 2px #7a3040;
-  transform: translate(-50%, -50%) scale(1.08);
-}
-
 .batman-cover-slot img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
+}
+
+.batman-cover-slot:hover {
+  z-index: 5;
+  transform: translate(calc(-50% + 10px), -50%) scale(1.08);
 }
 
 /* Game information popup shown over the Batman artwork. */
@@ -1415,7 +1452,9 @@ body {
   pointer-events: none;
   visibility: hidden;
   transform: none;
-  transition: opacity 0.75s cubic-bezier(.22, 1, .36, 1);
+  transition:
+    opacity 0.75s cubic-bezier(.22, 1, .36, 1),
+    visibility 0s linear 0.75s;
 }
 
 .game-about-panel.visible {
@@ -1424,14 +1463,57 @@ body {
   pointer-events: auto;
   visibility: visible;
   transform: none;
+  transition:
+    opacity 0.75s cubic-bezier(.22, 1, .36, 1),
+    visibility 0s linear 0s;
 }
 
 .game-about-heading {
+  position: relative;
   width: min(440px, 100%);
-  min-height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+.legal-notice a {
+  color: #9a99ff;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.legal-notice a:hover,
+.legal-notice a:focus-visible {
+  color: #ffffff;
+}
+
+/* INVERT COLORS BUTTON */
+.invert-colors-button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transform: translateY(9px);
+}
+
+.invert-colors-button:hover {
+  color: #9a99ff;
+}
+
+.invert-colors-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+body.colors-inverted {
+  filter: invert(1);
 }
 
 .game-about-panel h2 {
@@ -1442,11 +1524,24 @@ body {
   letter-spacing: 0;
 }
 
+.selected-game-release {
+  margin: 8px 0 0;
+  color: #aaa9c4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 .selected-game-price {
-  margin: auto 0 12px;
+  position: absolute;
+  left: 0;
+  bottom: 58px;
+  width: 100%;
+  margin: 0;
   color: #9a99ff;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -1455,11 +1550,14 @@ body {
   margin: 16px 0 0;
   color: #c3c9e7;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 19.5px;
   line-height: 1.5;
 }
 
 .add-to-cart-button {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
   min-width: 180px;
   height: 44px;
   padding: 0 16px;
@@ -1475,7 +1573,7 @@ body {
   letter-spacing: 1px;
   cursor: pointer;
   align-self: center;
-  margin-top: auto;
+  transform: translateX(-50%);
   transition: background 0.2s ease, color 0.2s ease;
 }
 
@@ -1500,13 +1598,13 @@ body {
   height: 32px;
   border: 0;
   background: transparent;
-  color: #ffffff;
+  color: #5a5a5a;
   cursor: pointer;
 }
 
 .game-about-close:hover {
   background: transparent;
-  color: #9a99ff;
+  color: #8a8a8a;
 }
 
 .game-about-close svg {
@@ -1516,6 +1614,12 @@ body {
 
 .cover-photo-grid {
   width: 100%;
+  padding: 24px;
+  border: 3px solid #0e0d3e;
+  border-radius: 10px;
+  outline: 1px solid #0e0d3e;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 5px #0e0d3e;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 24px;
@@ -1533,48 +1637,54 @@ body {
     border-color 0.35s cubic-bezier(.22, 1, .36, 1),
     box-shadow 0.35s cubic-bezier(.22, 1, .36, 1);
 }
+/* How to make the photos expand on hover */
 
 .photo-slot:hover {
-  z-index: 4;
-  border-color: #28276f;
-  box-shadow: none;
-  background: #0e0d3e;
-  transform: none;
+  z-index: auto;                  /*allows the image to move.*/
+  box-shadow: none;               /*remove the shadow on hover*/
+  background: #0e0d3e;               /*change background on hover*/
+  transform: none;                  /*reset any transform on hover*/
 }
-
+/*image expands on hover only in game area*/
 .photo-slot img {
-  transition: transform 0.45s cubic-bezier(.22, 1, .36, 1);
-  transform-origin: right center;
+  position: relative;
+  pointer-events: none; 
+  transition: transform 0.45s cubic-bezier(.22, 1, .36, 1);   /*makes the movement smooth.*/
+  transform-origin: right center;             
 }
 
-.photo-slot:nth-child(5n + 1):hover img,
+.photo-slot:hover img {  
+  z-index: 100;
+}
+
+.photo-slot:nth-child(5n + 1):hover img,  /*:hover img acivates the animation*/
 .photo-slot:nth-child(5n + 6):hover img,
 .photo-slot:nth-child(5n + 11):hover img {
-  transform: translateX(-159px) scale(2.8);
+  transform: translateX(-172px) scale(2.8);   /*move and scale the image on hover*/
 }
 
 .photo-slot:nth-child(5n + 2):hover img,
 .photo-slot:nth-child(5n + 7):hover img,
 .photo-slot:nth-child(5n + 12):hover img {
-  transform: translateX(-291px) scale(2.8);
+  transform: translateX(-290px) scale(2.8);
 }
 
 .photo-slot:nth-child(5n + 3):hover img,
 .photo-slot:nth-child(5n + 8):hover img,
 .photo-slot:nth-child(5n + 13):hover img {
-  transform: translateX(-422px) scale(2.8);
+  transform: translateX(-409px) scale(2.8);
 }
 
 .photo-slot:nth-child(5n + 4):hover img,
 .photo-slot:nth-child(5n + 9):hover img,
 .photo-slot:nth-child(5n + 14):hover img {
-  transform: translateX(-553px) scale(2.8);
+  transform: translateX(-536px) scale(2.8);
 }
 
 .photo-slot:nth-child(5n):hover img,
 .photo-slot:nth-child(5n + 10):hover img,
 .photo-slot:nth-child(5n + 15):hover img {
-  transform: translateX(-684px) scale(2.8);
+  transform: translateX(-656px) scale(2.8);
 }
 
 .photo-slot:nth-child(-n + 5):hover img {
@@ -1587,6 +1697,26 @@ body {
   top: -160px;
 }
 
+.photo-slot:nth-child(1):hover img {
+  transform: translateX(-172px) scale(2.8);
+}
+
+.photo-slot:nth-child(2):hover img {
+  transform: translateX(-290px) scale(2.8);
+}
+
+.photo-slot:nth-child(3):hover img {
+  transform: translateX(-409px) scale(2.8);
+}
+
+.photo-slot:nth-child(4):hover img {
+  transform: translateX(-536px) scale(2.8);
+}
+
+.photo-slot:nth-child(5):hover img {
+  transform: translateX(-656px) scale(2.8);
+}
+
 .photo-slot:active {
   transform: scale(0.94);
 }
@@ -1597,6 +1727,118 @@ body {
   height: 100%;
   object-fit: contain;
   object-position: center;
+}
+
+/* Match the outline to the square artwork in photos 11-15. */
+.photo-slot:nth-child(n + 11) {
+  aspect-ratio: 1 / 1;
+}
+
+/* Match each frame to the natural image ratio without cropping the artwork. */
+.photo-slot:nth-child(1) {
+  aspect-ratio: 116 / 164;
+}
+
+.photo-slot:nth-child(2) {
+  aspect-ratio: 120 / 165;
+}
+
+.photo-slot:nth-child(3) {
+  aspect-ratio: 109 / 164;
+}
+
+.photo-slot:nth-child(4) {
+  aspect-ratio: 118 / 167;
+}
+
+.photo-slot:nth-child(5) {
+  aspect-ratio: 121 / 186;
+}
+
+.photo-slot:nth-child(6) {
+  aspect-ratio: 110 / 156;
+}
+
+.photo-slot:nth-child(7) {
+  aspect-ratio: 114 / 161;
+}
+
+.photo-slot:nth-child(8) {
+  aspect-ratio: 125 / 177;
+}
+
+.photo-slot:nth-child(9) {
+  aspect-ratio: 124 / 177;
+}
+
+.photo-slot:nth-child(10) {
+  aspect-ratio: 126 / 177;
+}
+
+.photo-slot:nth-child(11) {
+  aspect-ratio: 130 / 131;
+}
+
+.photo-slot:nth-child(12) {
+  aspect-ratio: 132 / 131;
+}
+
+.photo-slot:nth-child(15) {
+  aspect-ratio: 135 / 136;
+}
+
+.photo-slot:nth-child(n + 11) img {
+  object-fit: cover;
+}
+
+/* Give games 1-15 the same border treatment as the Batman cover. */
+.cover-photo-grid > .photo-slot {
+  border: 0;
+  border-radius: 6px;
+}
+
+.cover-photo-grid > .photo-slot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 4px solid #5a5a5a;
+  border-radius: 6px;
+  box-sizing: border-box;
+  object-fit: contain;
+}
+
+/* Let top-row cards keep their individual image height in the shared grid row. */
+.cover-photo-grid > .photo-slot:nth-child(-n + 5) {
+  align-self: start;
+  height: fit-content;
+  aspect-ratio: auto;
+  background: transparent;
+}
+
+.cover-photo-grid > .photo-slot:nth-child(-n + 5) img {
+  height: auto;
+  aspect-ratio: inherit;
+}
+
+.cover-photo-grid > .photo-slot:nth-child(n + 11) img {
+  object-fit: contain;
+}
+
+.cover-photo-grid > .photo-slot:nth-child(n + 11) {
+  height: fit-content;
+  aspect-ratio: auto;
+  background: transparent;
+}
+
+/* Keep the cover-colored hover perimeter on rows 1 and 3 as well. */
+.cover-photo-grid > .photo-slot:nth-child(-n + 5):hover,
+.cover-photo-grid > .photo-slot:nth-child(n + 11):hover {
+  background: #0e0d3e;
+}
+
+.cover-photo-grid > .photo-slot:nth-child(n + 11) img {
+  height: auto;
+  object-fit: initial;
 }
 
 .photo-slot::before,
@@ -1794,15 +2036,16 @@ a.eyso-brand {
 .video-scroll-button {
   position: absolute;
   left: 50%;
-  bottom: 30px;
+  bottom: 42px;
   z-index: 2;
   width: 48px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 0;
-  background: transparent;
+  border: 1px solid #5a5a5a;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.30);
   color: #ffffff;
   cursor: pointer;
   transform: translateX(-50%);
@@ -1818,7 +2061,7 @@ a.eyso-brand {
   bottom: 0;
   z-index: 1;
   width: 100%;
-  background: rgba(255, 255, 255, 0.08);
+  background: transparent;
   cursor: pointer;
 }
 
@@ -2468,6 +2711,23 @@ body {
 
 .bottom-nav {
   border-top: 3px solid #5a5a5a;
+  background: #28276f;
+  height: 55px;
+  min-height: 55px;
+  flex-wrap: wrap;
+  align-content: center;
+  row-gap: 8px;
+}
+
+.legal-notice {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  color: #b6b6b6;
+  font-size: 9px;
+  line-height: 1.1;
+  text-align: center;
 }
 
 .topbar {
@@ -2559,5 +2819,21 @@ body {
   .remove-cart-item {
     grid-column: 3;
     grid-row: 1;
+  }
+
+  .bottom-nav {
+    height: auto;
+    min-height: 55px;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .legal-notice {
+    width: 100%;
+    max-width: none;
+    margin: 4px 0 0;
+    text-align: left;
   }
 }
