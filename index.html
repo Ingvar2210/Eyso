@@ -67,7 +67,7 @@
 
       <button class="cart-button" id="openCheckout" type="button" aria-label="Shopping cart">
       <i data-lucide="shopping-cart"></i>
-      <span class="cart-count" id="cartCount">0</span>
+      <span class="cart-count" id="cartCount" hidden>0</span>
       </button>
 
 
@@ -97,6 +97,8 @@
     <source src="Backround vid2.mp4" type="video/mp4">
     Your browser does not support HTML video.
   </video>
+
+  <p class="video-input-label">Buy the game<br><span>own the game!</span></p>
 
   <div
     class="video-scroll-zone"
@@ -130,7 +132,8 @@
           </button>
           <div class="game-about-heading">
             <h2 id="selectedGameTitle"></h2>
-            <p class="selected-game-description">A classic retro game ready to add to your collection.</p>
+            <p class="selected-game-release" id="selectedGameRelease">Release: xxxx</p>
+            <p class="selected-game-description" id="selectedGameDescription">A classic retro game ready to add to your collection.</p>
             <p class="selected-game-price"></p>
             <button class="add-to-cart-button" id="addToCart" type="button">
               <span>ADD TO CART</span>
@@ -164,11 +167,10 @@
 
 
     <nav class="bottom-nav">
-      <a href="#">Horror</a>
-      <a href="#">Fighting</a>
-      <a href="#">Racing</a>
-      <a href="#">Shooter</a>
-      <a href="#">Adventure</a>
+      <button class="invert-colors-button" id="invertColorsButton" type="button" aria-label="Invert page colors" aria-pressed="false">
+        <i data-lucide="eye-closed"></i>
+      </button>
+      <p class="legal-notice">Using the EYSO.COM platform constitutes acceptance of the <a href="#terms">EYSO Terms and Conditions</a>. Information on how we process your personal data can be found in the <a href="#privacy">Privacy and Cookies Policy</a>. Copyright © EYSO Group. All rights reserved.</p>
     </nav>
 
   </div>
@@ -612,6 +614,21 @@
     const checkoutForm =
       document.getElementById("checkoutForm");
 
+    // Toggle the page color palette and the eye control state.
+    const invertColorsButton =
+      document.getElementById("invertColorsButton");
+
+    invertColorsButton.addEventListener("click", () => {
+      const isInverted = document.body.classList.toggle("colors-inverted");
+      invertColorsButton.setAttribute("aria-pressed", String(isInverted));
+      invertColorsButton.setAttribute(
+        "aria-label",
+        isInverted ? "Restore page colors" : "Invert page colors"
+      );
+      invertColorsButton.innerHTML = `<i data-lucide="${isInverted ? "eye" : "eye-closed"}"></i>`;
+      lucide.createIcons();
+    });
+
     // Cart state and checkout summary updates.
     const cartCount =
       document.getElementById("cartCount");
@@ -637,6 +654,50 @@
     const selectedGamePrice =
       document.querySelector(".selected-game-price");
 
+    const selectedGameDescription =
+      document.getElementById("selectedGameDescription");
+
+    const selectedGameRelease =
+      document.getElementById("selectedGameRelease");
+
+    const gameDescriptions = {
+      "Batman: Arkham City": "Become the Dark Knight in Batman: Arkham City for the PlayStation 3. Enter the heavily fortified streets of Arkham City, a sprawling prison district filled with Gotham's most dangerous criminals and some of Batman's greatest enemies.",
+      "Animal Crossing": "Step into a charming world where every day brings something new in Animal Crossing for the Nintendo GameCube. Move into a peaceful village filled with quirky animal neighbors, build and decorate your own home, go fishing, catch bugs, hunt for fossils, and watch the town change with the seasons.",
+      "Luigi's Mansion": "Step into the spooky halls of a haunted mansion in Luigi's Mansion for the Nintendo GameCube. After winning a mysterious mansion in a contest he never entered, Luigi must explore eerie rooms, solve puzzles, uncover hidden secrets, and capture ghosts as he searches for his brother.",
+      "The Legend of Zelda: Twilight Princess": "Embark on an unforgettable adventure in The Legend of Zelda: Twilight Princess for the Nintendo GameCube. When the peaceful land of Hyrule is threatened by a mysterious realm of darkness, Link must rise to protect the kingdom and uncover the secrets behind the spreading Twilight.",
+      "Battalion Wars": "Jump into the action with Battalion Wars for the Nintendo GameCube, a fast-paced military strategy game that combines tactical command with third-person combat. Take control of soldiers, tanks, helicopters, and other powerful units as you fight across large battlefields and lead your forces to victory.",
+      "Mario Kart: Double Dash!!": "Get ready for high-speed racing and chaotic multiplayer fun in Mario Kart: Double Dash!! for the Nintendo GameCube. Race across colorful tracks with familiar characters from the Mario universe while using shells, bananas, boosts, and other items to fight your way to the finish line.",
+      "Resident Evil": "Enter a terrifying new chapter of survival horror in Resident Evil 4 for the PlayStation 2. Take control of Leon S. Kennedy, a government agent sent to a remote European village on a mission to rescue the U.S. president's kidnapped daughter, Ashley Graham.",
+      "Star Wars Battlefront": "Experience epic battles from a galaxy far, far away in Star Wars: Battlefront II for the PlayStation 2. Fight across iconic locations from the Star Wars universe as you join massive conflicts between the Republic, Separatists, Rebel Alliance, and Galactic Empire.",
+      "The Sims 2: Pets": "Create your own characters and take control of their lives in The Sims 2 for the PlayStation 2. Build and decorate homes, develop relationships, pursue careers, and guide your Sims through the ups and downs of everyday life.",
+      "Kingdom Hearts": "Embark on a magical adventure in Kingdom Hearts for the PlayStation 2, an unforgettable action RPG that brings together the worlds of Disney and Final Fantasy. Follow Sora, a young hero chosen by the mysterious Keyblade, as he journeys across different worlds in search of his missing friends.",
+      "The Simpsons: Hit & Run": "Explore Springfield like never before in The Simpsons: Hit & Run for the PlayStation 2. Take control of Homer, Bart, Lisa, Marge, and Apu as they investigate a strange conspiracy unfolding across the city.",
+      "Tetris": "Experience one of the most iconic puzzle games of all time with Tetris for the Nintendo Game Boy. Arrange falling blocks, complete horizontal lines, and keep the screen clear as the game becomes faster and more challenging.",
+      "Earthworm Jim": "Get ready for a wild and wacky adventure in Earthworm Jim for the Nintendo Game Boy. Take control of Jim, an ordinary earthworm who becomes an unlikely superhero after discovering a powerful high-tech suit.",
+      "Gargoyle's Quest": "Enter a dark fantasy world in Gargoyle's Quest for the Nintendo Game Boy. Take control of Firebrand, a powerful gargoyle destined to defend the Ghoul Realm from a mysterious invading force.",
+      "DuckTales": "Join Scrooge McDuck on a treasure-hunting adventure in Disney's DuckTales for the Nintendo Game Boy. Travel around the world in search of valuable treasures while facing enemies, tricky obstacles, and challenging platforming stages.",
+      "Pokemon Red Version": "Begin your journey to become a Pokémon Master in Pokémon Red Version for the Nintendo Game Boy. Set out across the Kanto region, catching, training, and battling Pokémon as you work toward defeating the Gym Leaders and taking on the powerful Elite Four."
+    };
+
+    const gameReleases = {
+      "Batman: Arkham City": "Release: 2011",
+      "Animal Crossing": "Release: 2001",
+      "Luigi's Mansion": "Release: 2001",
+      "The Legend of Zelda: Twilight Princess": "Release: 2006",
+      "Battalion Wars": "Release: 2005",
+      "Mario Kart: Double Dash!!": "Release: 2003",
+      "Resident Evil": "Release: 2005",
+      "Star Wars Battlefront": "Release: 2005",
+      "The Sims 2: Pets": "Release: 2005",
+      "Kingdom Hearts": "Release: 2002",
+      "The Simpsons: Hit & Run": "Release: 2003",
+      "Tetris": "Release: 1989",
+      "Earthworm Jim": "Release: 1995",
+      "Gargoyle's Quest": "Release: 1990",
+      "DuckTales": "Release: 1990",
+      "Pokemon Red Version": "Release: 1998"
+    };
+
     let selectedGame = null;
     const cart = [];
 
@@ -647,6 +708,7 @@
       );
 
       cartCount.textContent = itemCount;
+      cartCount.hidden = itemCount === 0;
       cartItemCount.textContent = `${itemCount} ${itemCount === 1 ? "ITEM" : "ITEMS"}`;
       emptyCartMessage.hidden = cart.length > 0;
       cartItems.innerHTML = cart.map(
@@ -1336,15 +1398,28 @@ Sent through the EYSO website.`;
     function showGameAbout(event) {
 
       const gameSlot = event.currentTarget;
+      const gameName = gameSlot.dataset.gameName;
+
+      if (
+        gameAboutPanel.classList.contains("visible") &&
+        selectedGame &&
+        selectedGame.id === gameName
+      ) {
+        gameAboutPanel.classList.remove("visible");
+        gameAboutPanel.setAttribute("aria-hidden", "true");
+        selectedGame = null;
+        return;
+      }
+
       const gameImage = gameSlot.querySelector("img");
-      const price = Number(gameSlot.dataset.price || 0);
+      const price = Number(gameSlot.dataset.price || 29.99);
 
       selectedGame = {
-        id: gameSlot.dataset.gameName,
-        name: gameSlot.dataset.gameName,
+        id: gameName,
+        name: gameName,
         image: gameImage ? gameImage.getAttribute("src") : "",
         price,
-        priceLabel: price ? `$${price.toFixed(2)}` : "PRICE COMING SOON"
+        priceLabel: `$${price.toFixed(2)}`
       };
 
       selectedGameTitle.textContent =
@@ -1352,6 +1427,14 @@ Sent through the EYSO website.`;
 
       selectedGamePrice.textContent =
         selectedGame.priceLabel;
+
+      selectedGameDescription.textContent =
+        gameDescriptions[selectedGame.name] ||
+        "A classic retro game ready to add to your collection.";
+
+      selectedGameRelease.textContent =
+        gameReleases[selectedGame.name] ||
+        "Release: xxxx";
 
       addToCart.querySelector("span").textContent =
         cart.some((item) => item.id === selectedGame.id)
@@ -1436,14 +1519,6 @@ Sent through the EYSO website.`;
     );
 
 
-    batmanCoverSlot.addEventListener(
-      "mouseenter",
-      (event) => {
-        showGameAbout(event);
-      }
-    );
-
-
     // Smoothly move from the hero video to the game collection.
     function panToCoverPage() {
 
@@ -1507,6 +1582,39 @@ Sent through the EYSO website.`;
 
       }
     );
+
+    // Move the slogan around the video and redirect it at each wall.
+    const videoInputLabel =
+      document.querySelector(".video-input-label");
+
+    let labelX = videoInputLabel.offsetLeft;
+    let labelY = videoInputLabel.offsetTop;
+    let labelVelocityX = 2.2;
+    let labelVelocityY = 1.6;
+
+    function moveVideoInputLabel() {
+      const maxX = videoScrollZone.parentElement.clientWidth - videoInputLabel.offsetWidth;
+      const maxY = videoScrollZone.parentElement.clientHeight - videoInputLabel.offsetHeight;
+
+      labelX += labelVelocityX;
+      labelY += labelVelocityY;
+
+      if (labelX <= 0 || labelX >= maxX) {
+        labelVelocityX *= -1;
+        labelX = Math.max(0, Math.min(labelX, maxX));
+      }
+
+      if (labelY <= 0 || labelY >= maxY) {
+        labelVelocityY *= -1;
+        labelY = Math.max(0, Math.min(labelY, maxY));
+      }
+
+      videoInputLabel.style.left = `${labelX}px`;
+      videoInputLabel.style.top = `${labelY}px`;
+      requestAnimationFrame(moveVideoInputLabel);
+    }
+
+    requestAnimationFrame(moveVideoInputLabel);
 
   </script>
 
